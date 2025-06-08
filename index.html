@@ -1,0 +1,1126 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francisco Eudes Pereira | Terapeuta TRG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        babyblue: '#BCDEFA',
+                        lightblue: '#E6F3FF',
+                        navyblue: '#0A3D62',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .hero-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card {
+            transition: all 0.5s ease;
+            border-bottom: 4px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(10, 61, 98, 0.1);
+            border-bottom: 4px solid #BCDEFA;
+        }
+        
+        .service-icon {
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            background-color: #0A3D62;
+            color: #BCDEFA;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #BCDEFA;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-item.active {
+            box-shadow: 0 10px 15px rgba(10, 61, 98, 0.1);
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: #F8FBFF;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: #BCDEFA;
+            opacity: 0.5;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background-color: #0A3D62;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #0A3D62;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(10, 61, 98, 0.1);
+        }
+        
+        .blog-card .blog-image {
+            transition: all 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-image {
+            transform: scale(1.05);
+        }
+        
+        .calendar-day {
+            transition: all 0.3s ease;
+        }
+        
+        .calendar-day:hover:not(.calendar-day-disabled) {
+            background-color: #BCDEFA;
+            color: #0A3D62;
+            transform: scale(1.05);
+        }
+        
+        .calendar-day-selected {
+            background-color: #0A3D62 !important;
+            color: white !important;
+        }
+        
+        .calendar-day-disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover::after {
+            height: 100%;
+        }
+        
+        .section-divider {
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23BCDEFA' fill-opacity='0.3' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .highlight-text {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(188, 222, 250, 0.4);
+            z-index: -1;
+        }
+        
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+        
+        .input-focus:focus {
+            transform: translateY(-2px);
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .feature-number {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-number::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #BCDEFA;
+            border-radius: 50%;
+            z-index: -1;
+            top: -5px;
+            left: -5px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5500000000000" class="whatsapp-button bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <span class="text-navyblue font-bold text-2xl">Francisco Eudes</span>
+                <span class="ml-2 text-babyblue font-medium">TRG</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Início</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Sobre</a>
+                <a href="#trg" class="nav-link text-gray-700 hover:text-navyblue transition-colors">O que é TRG</a>
+                <a href="#services" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Serviços</a>
+                <a href="#testimonials" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Depoimentos</a>
+                <a href="#faq" class="nav-link text-gray-700 hover:text-navyblue transition-colors">FAQ</a>
+                <a href="#blog" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Blog</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-navyblue transition-colors">Contato</a>
+            </div>
+            
+            <button class="md:hidden text-navyblue" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <a href="#contact" class="hidden md:inline-block bg-navyblue hover:bg-blue-900 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 btn-primary">
+                Agendar Consulta
+            </a>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t border-gray-100">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Início</a>
+                <a href="#about" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Sobre</a>
+                <a href="#trg" class="text-gray-700 hover:text-navyblue py-2 transition-colors">O que é TRG</a>
+                <a href="#services" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Serviços</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Depoimentos</a>
+                <a href="#faq" class="text-gray-700 hover:text-navyblue py-2 transition-colors">FAQ</a>
+                <a href="#blog" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Blog</a>
+                <a href="#contact" class="text-gray-700 hover:text-navyblue py-2 transition-colors">Contato</a>
+                <a href="#contact" class="bg-navyblue hover:bg-blue-900 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 text-center mt-2">
+                    Agendar Consulta
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-br from-babyblue to-lightblue relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 z-10">
+                    <div class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm p-8 rounded-lg shadow-xl">
+                        <span class="inline-block px-4 py-1 bg-babyblue text-navyblue rounded-full text-sm font-medium mb-4">Terapia de Reprocessamento Generativo</span>
+                        <h1 class="text-4xl md:text-5xl font-bold text-navyblue mb-4">Transforme sua vida com a <span class="highlight-text">TRG</span></h1>
+                        <p class="text-lg text-gray-700 mb-8">Descubra um caminho eficaz para superar bloqueios emocionais, processar traumas e promover seu crescimento pessoal com Francisco Eudes Pereira.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#contact" class="bg-navyblue hover:bg-blue-900 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 text-center btn-primary">
+                                <i class="far fa-calendar-alt mr-2"></i>Agende sua Consulta
+                            </a>
+                            <a href="#trg" class="bg-white hover:bg-gray-100 text-navyblue font-medium py-3 px-8 rounded-lg border border-navyblue transition-all duration-300 text-center">
+                                <i class="fas fa-info-circle mr-2"></i>Saiba mais sobre TRG
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex items-center justify-center sm:justify-start">
+                        <span class="text-navyblue mr-4">Deslize para descobrir</span>
+                        <div class="scroll-indicator text-navyblue">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center relative z-10">
+                    <div class="relative w-64 h-64 md:w-96 md:h-96 animate-float">
+                        <div class="absolute w-full h-full rounded-full bg-white shadow-xl overflow-hidden">
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#BCDEFA" d="M48.8,-59.2C62.9,-48.3,74.2,-33.1,78.1,-16.2C82,0.8,78.5,19.5,69.8,34.8C61.1,50.1,47.1,62,31.1,68.8C15.1,75.6,-2.9,77.3,-20.8,73.1C-38.7,68.9,-56.5,58.8,-67.4,43.4C-78.3,28,-82.3,7.3,-77.7,-10.5C-73.1,-28.3,-59.9,-43.2,-45,-55.1C-30.1,-67,-15.1,-75.9,0.8,-76.9C16.6,-77.9,34.7,-70.1,48.8,-59.2Z" transform="translate(100 100)" />
+                            </svg>
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-72 md:h-72">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                                <circle cx="100" cy="85" r="40" fill="#0A3D62" />
+                                <circle cx="100" cy="70" r="20" fill="#BCDEFA" />
+                                <path d="M70,120 Q100,150 130,120" stroke="#0A3D62" stroke-width="3" fill="transparent" />
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-4 left-0 right-0 text-center">
+                            <div class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm py-2 px-4 rounded-full inline-block">
+                                <span class="text-navyblue font-bold">Francisco Eudes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 rounded-full bg-babyblue opacity-20"></div>
+        <div class="absolute bottom-40 right-10 w-32 h-32 rounded-full bg-navyblue opacity-10"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 rounded-full bg-babyblue opacity-20"></div>
+        
+        <div class="hero-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-start">
+                        <span class="feature-number text-2xl font-bold text-navyblue mr-4">01</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-navyblue mb-2">Atendimento Personalizado</h3>
+                            <p class="text-gray-700">Cada sessão é adaptada às suas necessidades específicas, respeitando seu ritmo e processo individual.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-start">
+                        <span class="feature-number text-2xl font-bold text-navyblue mr-4">02</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-navyblue mb-2">Resultados Efetivos</h3>
+                            <p class="text-gray-700">A TRG proporciona transformações profundas e duradouras em um período relativamente curto de tempo.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex items-start">
+                        <span class="feature-number text-2xl font-bold text-navyblue mr-4">03</span>
+                        <div>
+                            <h3 class="text-xl font-semibold text-navyblue mb-2">Flexibilidade</h3>
+                            <p class="text-gray-700">Sessões disponíveis online ou presencialmente, adaptando-se à sua rotina e necessidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-babyblue text-navyblue rounded-full text-sm font-medium mb-2">Conheça seu terapeuta</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Sobre Francisco Eudes Pereira</h2>
+                <div class="w-24 h-1 bg-babyblue mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-2/5 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-babyblue shadow-lg">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                                <circle cx="100" cy="100" r="100" fill="#E6F3FF" />
+                                <circle cx="100" cy="85" r="40" fill="#0A3D62" />
+                                <circle cx="100" cy="70" r="20" fill="#BCDEFA" />
+                                <path d="M70,120 Q100,150 130,120" stroke="#0A3D62" stroke-width="3" fill="transparent" />
+                            </svg>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-babyblue rounded-full p-4 shadow-lg">
+                            <i class="fas fa-certificate text-2xl text-navyblue"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5 md:pl-16">
+                    <h3 class="text-2xl font-semibold text-navyblue mb-4">Terapeuta especializado em TRG</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">Francisco Eudes Pereira é um terapeuta dedicado e experiente, especializado na Terapia de Reprocessamento Generativo (TRG). Com uma abordagem centrada no cliente, Francisco combina técnicas avançadas de TRG com uma escuta humanizada para ajudar seus pacientes a superarem bloqueios emocionais e traumas.</p>
+                    <p class="text-gray-700 mb-6 leading-relaxed">Sua metodologia é estruturada e ao mesmo tempo gentil, respeitando o processo individual de cada pessoa. Francisco acredita que todos têm o potencial para transformação e crescimento, independentemente dos desafios que enfrentam.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                <i class="fas fa-certificate text-navyblue"></i>
+                            </div>
+                            <span class="text-gray-700">Certificado em TRG</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                <i class="fas fa-user-graduate text-navyblue"></i>
+                            </div>
+                            <span class="text-gray-700">Formação especializada</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                <i class="fas fa-brain text-navyblue"></i>
+                            </div>
+                            <span class="text-gray-700">Abordagem integrativa</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                <i class="fas fa-heart text-navyblue"></i>
+                            </div>
+                            <span class="text-gray-700">Atendimento humanizado</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-navyblue hover:bg-blue-900 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 btn-primary">
+                        <i class="far fa-calendar-alt mr-2"></i>Agende uma Consulta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is TRG Section -->
+    <section id="trg" class="py-16 md:py-24 bg-lightblue relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-white text-navyblue rounded-full text-sm font-medium mb-2">Metodologia</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">O que é TRG?</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Terapia de Reprocessamento Generativo: uma abordagem poderosa para transformação emocional</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                    <div class="w-20 h-20 rounded-full bg-babyblue flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-brain text-3xl text-navyblue"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">O Método</h3>
+                    <p class="text-gray-700 leading-relaxed">A TRG é uma técnica terapêutica avançada que trabalha com o reprocessamento de memórias e padrões emocionais. Ela permite acessar e transformar bloqueios emocionais profundos de forma segura e eficaz.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                    <div class="w-20 h-20 rounded-full bg-babyblue flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-cogs text-3xl text-navyblue"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Como Funciona</h3>
+                    <p class="text-gray-700 leading-relaxed">Durante as sessões, o terapeuta guia o cliente através de um processo estruturado que permite identificar e transformar padrões limitantes, liberando o potencial natural para cura e crescimento pessoal.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300">
+                    <div class="w-20 h-20 rounded-full bg-babyblue flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-chart-line text-3xl text-navyblue"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Benefícios</h3>
+                    <p class="text-gray-700 leading-relaxed">A TRG proporciona resultados rápidos e duradouros, ajudando a reduzir ansiedade, superar traumas, melhorar a autoestima e reprogramar comportamentos limitantes para uma vida mais plena e satisfatória.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-semibold text-navyblue mb-8 text-center">O Processo da TRG</h3>
+                
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <ol class="space-y-8">
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">1</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Identificação</h4>
+                                    <p class="text-gray-700 leading-relaxed">Reconhecimento dos padrões emocionais e comportamentais que estão causando limitações em sua vida e bem-estar.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">2</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Acesso</h4>
+                                    <p class="text-gray-700 leading-relaxed">Conexão com as memórias e emoções associadas aos padrões limitantes de forma segura e controlada.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">3</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Reprocessamento</h4>
+                                    <p class="text-gray-700 leading-relaxed">Transformação das memórias e padrões através de técnicas específicas de TRG, criando novas perspectivas.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="md:w-1/2 md:pl-8 md:border-l border-gray-200">
+                        <ol class="space-y-8">
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">4</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Integração</h4>
+                                    <p class="text-gray-700 leading-relaxed">Incorporação das novas perspectivas e recursos emocionais na vida cotidiana, fortalecendo as mudanças.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">5</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Transformação</h4>
+                                    <p class="text-gray-700 leading-relaxed">Mudanças positivas nos comportamentos, emoções e qualidade de vida, com resultados perceptíveis.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-navyblue text-white flex items-center justify-center mr-4 shadow-md">6</div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue mb-2">Autonomia</h4>
+                                    <p class="text-gray-700 leading-relaxed">Desenvolvimento de recursos internos para lidar com desafios futuros de forma independente e eficaz.</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-10 w-40 h-40 rounded-full bg-white opacity-20"></div>
+        <div class="absolute bottom-40 left-10 w-60 h-60 rounded-full bg-white opacity-10"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-babyblue text-navyblue rounded-full text-sm font-medium mb-2">Como posso ajudar</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Serviços</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Conheça as áreas em que Francisco Eudes pode ajudar você através da TRG</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-wind text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Ansiedade e Estresse</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Aprenda a gerenciar a ansiedade e o estresse através de técnicas eficazes de TRG, recuperando sua tranquilidade e equilíbrio emocional.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-ghost text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Medos e Fobias</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Supere medos e fobias que limitam sua vida, através de um processo terapêutico seguro e eficaz que vai à raiz do problema.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-heart-broken text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Traumas Emocionais</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Processe e liberte-se de traumas emocionais, incluindo experiências da infância, através de um método que respeita seu ritmo.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-star text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Autoestima e Confiança</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Desenvolva uma autoestima saudável e fortaleça sua confiança, transformando crenças limitantes em recursos positivos.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-sync-alt text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Reprogramação de Padrões</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Identifique e transforme padrões comportamentais negativos que se repetem em sua vida, criando novas possibilidades.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-3 bg-babyblue"></div>
+                    <div class="p-8">
+                        <div class="w-20 h-20 rounded-full bg-lightblue flex items-center justify-center mb-6 mx-auto service-icon">
+                            <i class="fas fa-users text-3xl text-navyblue"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-4 text-center">Relacionamentos</h3>
+                        <p class="text-gray-700 mb-6 text-center leading-relaxed">Melhore seus relacionamentos pessoais e profissionais através da compreensão e transformação de padrões relacionais.</p>
+                        <div class="text-center">
+                            <a href="#contact" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                                Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="inline-block bg-navyblue hover:bg-blue-900 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 btn-primary">
+                    <i class="far fa-calendar-alt mr-2"></i>Agende sua Consulta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-lightblue">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-8 text-center transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-4xl font-bold text-navyblue mb-2">98%</div>
+                    <p class="text-gray-700">Taxa de satisfação dos clientes</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 text-center transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-4xl font-bold text-navyblue mb-2">500+</div>
+                    <p class="text-gray-700">Sessões realizadas</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 text-center transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-4xl font-bold text-navyblue mb-2">5</div>
+                    <p class="text-gray-700">Anos de experiência</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-8 text-center transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-4xl font-bold text-navyblue mb-2">3-5</div>
+                    <p class="text-gray-700">Sessões para resultados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-babyblue text-navyblue rounded-full text-sm font-medium mb-2">Histórias de sucesso</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Depoimentos</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">O que dizem as pessoas que passaram pelo processo de TRG</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper pb-12">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card bg-white rounded-lg shadow-lg p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="text-yellow-400 flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic text-lg leading-relaxed">"Após anos lutando contra a ansiedade, encontrei no Francisco e na TRG um caminho eficaz para recuperar minha tranquilidade. Em poucas sessões, consegui transformar padrões que me limitavam há anos. Hoje me sinto muito mais leve e capaz de lidar com situações que antes me paralisavam."</p>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <span class="text-navyblue font-bold text-xl">MR</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue text-lg">Maria R.</h4>
+                                    <p class="text-gray-600">Professora</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card bg-white rounded-lg shadow-lg p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="text-yellow-400 flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic text-lg leading-relaxed">"A TRG com o Francisco me ajudou a superar um trauma que carregava desde a infância. O processo foi surpreendentemente gentil e os resultados, transformadores. Hoje me sinto livre de um peso que carregava há décadas. Recomendo a todos que estão buscando uma solução eficaz para questões emocionais profundas."</p>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <span class="text-navyblue font-bold text-xl">CS</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue text-lg">Carlos S.</h4>
+                                    <p class="text-gray-600">Empresário</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card bg-white rounded-lg shadow-lg p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="text-yellow-400 flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic text-lg leading-relaxed">"Minha fobia social estava me impedindo de avançar profissionalmente. Com a TRG, consegui identificar a origem do problema e transformá-lo. Hoje consigo fazer apresentações com confiança e tranquilidade. O Francisco tem uma abordagem muito acolhedora e profissional, me senti segura durante todo o processo."</p>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <span class="text-navyblue font-bold text-xl">JL</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue text-lg">Juliana L.</h4>
+                                    <p class="text-gray-600">Analista de Marketing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="swiper-slide">
+                        <div class="testimonial-card bg-white rounded-lg shadow-lg p-8 mx-4">
+                            <div class="flex items-center mb-6">
+                                <div class="text-yellow-400 flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic text-lg leading-relaxed">"Busquei a TRG após um período de burnout severo. O Francisco me ajudou a reconectar com meus valores e propósito, além de transformar padrões de comportamento que me levavam à exaustão. O processo foi revelador e libertador. Hoje tenho uma relação muito mais saudável com meu trabalho e comigo mesmo."</p>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <span class="text-navyblue font-bold text-xl">RP</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navyblue text-lg">Ricardo P.</h4>
+                                    <p class="text-gray-600">Engenheiro de Software</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-lightblue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-white text-navyblue rounded-full text-sm font-medium mb-2">Dúvidas frequentes</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Perguntas Frequentes</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Respostas para as dúvidas mais comuns sobre a TRG e o processo terapêutico</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">Quantas sessões de TRG são necessárias?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">O número de sessões varia de acordo com cada caso e objetivo. Algumas pessoas experimentam mudanças significativas em 3 a 5 sessões, enquanto outras questões mais complexas podem requerer um processo mais longo. Na primeira consulta, após a avaliação inicial, Francisco poderá fornecer uma estimativa mais precisa para o seu caso específico.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">A TRG é adequada para crianças e adolescentes?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">Sim, a TRG pode ser adaptada para crianças a partir de 8 anos e adolescentes, com abordagens apropriadas para cada faixa etária. É especialmente eficaz para questões como ansiedade escolar, medos específicos, dificuldades de aprendizagem com base emocional e traumas. Para crianças menores, é realizada uma avaliação prévia para determinar a adequação da técnica.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">Nunca fiz terapia antes. A TRG é indicada para mim?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">Absolutamente! A TRG é uma abordagem acessível mesmo para quem nunca fez terapia. O processo é conduzido de forma estruturada e respeitosa, considerando o ritmo e as necessidades de cada pessoa. Francisco dedica especial atenção aos iniciantes, explicando cada etapa do processo e garantindo que se sintam seguros e confortáveis durante todo o percurso terapêutico.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">Como são realizadas as sessões online?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">As sessões online são realizadas através de plataformas seguras de videoconferência como Zoom ou Google Meet. É necessário um ambiente tranquilo, privado e sem interrupções, uma conexão estável de internet e um dispositivo com câmera e microfone. A eficácia das sessões online é comparável às presenciais, com a vantagem da conveniência e acessibilidade.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">A TRG tem contraindicações?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">A TRG é geralmente segura para a maioria das pessoas, mas pode haver contraindicações em casos de transtornos psiquiátricos graves não estabilizados, como psicose ou transtorno bipolar em fase aguda. Pessoas em uso de certos medicamentos ou com condições médicas específicas podem necessitar de adaptações. Na primeira consulta, é realizada uma avaliação completa para determinar se a TRG é adequada para o seu caso específico.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+                        <button class="faq-question w-full text-left p-6 focus:outline-none flex justify-between items-center">
+                            <h3 class="text-lg font-medium text-navyblue">Qual a duração de cada sessão de TRG?</h3>
+                            <i class="fas fa-chevron-down text-navyblue transition-transform"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-gray-700 leading-relaxed">As sessões de TRG geralmente duram entre 60 e 90 minutos. A primeira consulta pode ser um pouco mais longa (cerca de 90 a 120 minutos), pois inclui uma avaliação inicial detalhada e o estabelecimento dos objetivos terapêuticos. O tempo exato de cada sessão é ajustado de acordo com as necessidades específicas e o processo terapêutico de cada pessoa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-babyblue text-navyblue rounded-full text-sm font-medium mb-2">Conhecimento</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Blog</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Artigos e reflexões sobre saúde emocional, TRG e desenvolvimento pessoal</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-babyblue overflow-hidden">
+                        <div class="blog-image h-full w-full flex items-center justify-center">
+                            <i class="fas fa-brain text-6xl text-navyblue opacity-30"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>15 de Junho, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-3">Entendendo a Ansiedade: Causas e Soluções</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">Neste artigo, exploramos as raízes da ansiedade e como a TRG pode oferecer um caminho eficaz para sua superação, transformando padrões limitantes em recursos positivos.</p>
+                        <a href="#" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                            Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-babyblue overflow-hidden">
+                        <div class="blog-image h-full w-full flex items-center justify-center">
+                            <i class="fas fa-heart-broken text-6xl text-navyblue opacity-30"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>28 de Maio, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-3">O Impacto dos Traumas na Vida Adulta</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">Como experiências traumáticas da infância podem moldar nossos comportamentos adultos e como a TRG oferece um caminho seguro para a cura e transformação desses padrões.</p>
+                        <a href="#" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                            Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-babyblue overflow-hidden">
+                        <div class="blog-image h-full w-full flex items-center justify-center">
+                            <i class="fas fa-users text-6xl text-navyblue opacity-30"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="far fa-calendar-alt mr-2"></i>
+                            <span>10 de Abril, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-navyblue mb-3">Relacionamentos Saudáveis: O Papel da Autoconsciência</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">Como o autoconhecimento e a transformação de padrões emocionais através da TRG podem contribuir para relacionamentos mais saudáveis e satisfatórios.</p>
+                        <a href="#" class="inline-block text-navyblue font-medium hover:text-blue-800 transition-colors border-b-2 border-babyblue pb-1">
+                            Ler mais <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-block bg-white hover:bg-gray-100 text-navyblue font-medium py-3 px-8 rounded-lg border border-navyblue transition-all duration-300">
+                    <i class="fas fa-book-open mr-2"></i>Ver Todos os Artigos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-lightblue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1 bg-white text-navyblue rounded-full text-sm font-medium mb-2">Fale comigo</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navyblue mb-4">Contato</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">Entre em contato para agendar sua consulta ou esclarecer dúvidas</p>
+                <div class="w-24 h-1 bg-babyblue mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/3 mb-10 lg:mb-0 lg:pr-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8 h-full">
+                        <h3 class="text-2xl font-semibold text-navyblue mb-6">Informações de Contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <i class="fas fa-phone-alt text-navyblue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-navyblue mb-1">Telefone/WhatsApp</h4>
+                                    <p class="text-gray-700">(00) 00000-0000</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <i class="fas fa-envelope text-navyblue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-navyblue mb-1">E-mail</h4>
+                                    <p class="text-gray-700">contato@franciscoeudes.com.br</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <i class="fas fa-clock text-navyblue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-navyblue mb-1">Horário de Atendimento</h4>
+                                    <p class="text-gray-700">Segunda a Sexta: 8h às 20h<br>Sábado: 8h às 12h</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 rounded-full bg-babyblue flex items-center justify-center mr-4 shadow-md">
+                                    <i class="fas fa-laptop-house text-navyblue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-navyblue mb-1">Modalidades de Atendimento</h4>
+                                    <p class="text-gray-700">Online via Zoom ou Google Meet<br>Presencial (consultar disponibilidade)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-navyblue mb-3">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-navyblue hover:bg-navyblue hover:text-white transition-colors shadow-md">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-navyblue hover:bg-navyblue hover:text-white transition-colors shadow-md">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-navyblue hover:bg-navyblue hover:text-white transition-colors shadow-md">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-navyblue hover:bg-navyblue hover:text-white transition-colors shadow-md">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
